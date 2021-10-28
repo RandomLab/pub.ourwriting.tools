@@ -1,0 +1,27 @@
+{
+  "name": "pub.ourwriting.tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "graphql-request": "^3.6.1",
+    "mustache": "^4.2.0",
+    "mustache-express": "^1.3.2",
+    "node-fetch": "^3.0.0"
+  }
+}
