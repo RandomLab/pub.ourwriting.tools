@@ -1,0 +1,151 @@
+/*!***************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./dev/style.scss ***!
+  \***************************************************************************************************************************************************/
+@media print {
+  .garde {
+    height: var(--pagedjs-pagebox-height); }
+  .chapitre {
+    padding-left: 5mm;
+    padding-right: 5mm;
+    padding-top: 35mm;
+    height: var(--pagedjs-pagebox-height);
+    -moz-column-break-before: right;
+         break-before: right; }
+  .image {
+    padding-left: 5mm;
+    padding-right: 5mm;
+    padding-top: 15mm;
+    height: var(--pagedjs-pagebox-height);
+    -moz-column-break-before: right;
+         break-before: right; }
+    .image figure img {
+      width: 100%; }
+  .texte {
+    padding-left: 5mm;
+    padding-right: 5mm;
+    padding-top: 35mm;
+    height: var(--pagedjs-pagebox-height);
+    -moz-column-break-before: right;
+         break-before: right; }
+  .legende {
+    padding-left: 5mm;
+    padding-right: 5mm;
+    padding-top: 20mm;
+    height: var(--pagedjs-pagebox-height); }
+  .title {
+    position: running(title); }
+  .blanche {
+    height: var(--pagedjs-pagebox-height); }
+  .fig-1 {
+    margin-top: 30mm;
+    width: 90%;
+    padding-left: 10mm; }
+  .fig-2 {
+    margin-top: 40mm;
+    width: 130%;
+    padding-right: 30mm; }
+  .fig-3 {
+    margin-top: 10mm;
+    width: 90%;
+    padding-left: 10mm;
+    filter: invert(100%); }
+  .rotate_img {
+    transform: rotate(90deg); }
+  .texte_courant {
+    font-family: 'Karrik', Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    line-height: 13pt; }
+  .texte_fort {
+    font-family: 'HappyTimes', Times, serif;
+    font-size: 30pt;
+    line-height: 3.5; }
+  .texte_heavy {
+    font-family: 'CirrusCumulus', Times, serif;
+    font-size: 50pt;
+    line-height: 3.5rem; } }
+
+/* To define how the book look on the screen: */
+:root {
+  --color-background:  whitesmoke;
+  --color-pageBox: #666;
+  --color-paper: white;
+  --color-marginBox: transparent; }
+
+/* To define how the book look on the screen: */
+@media screen {
+  body {
+    background-color: var(--color-background); }
+  .pagedjs_pages {
+    display: flex;
+    width: calc(var(--pagedjs-width) * 2);
+    flex: 0;
+    flex-wrap: wrap;
+    margin: 0 auto; }
+  .pagedjs_page {
+    --pagedjs-baseline: 10mm;
+    --pagedjs-baseline-position: 9mm;
+    --pagedjs-baseline-color: cyan;
+    background-color: var(--color-paper);
+    background-size: 100% var(--pagedjs-baseline);
+    background-repeat: repeat-y;
+    background-position-y: var(--pagedjs-baseline-position); }
+  .pagedjs_first_page {
+    margin-left: var(--pagedjs-width); }
+  .pagedjs_page:last-of-type {
+    margin-bottom: 10mm; } }
+
+.pagedjs_titre_page > .pagedjs_sheet > .pagedjs_pagebox > .pagedjs_area {
+  background-color: white !important; }
+
+@page {
+  size: 108mm 175mm;
+  margin: 20mm;
+  marks: crop;
+  bleed: 3.8mm; }
+
+@page :right {
+  margin-left: 10mm;
+  margin-right: 15mm;
+  margin-top: 20mm;
+  margin-bottom: 20mm;
+  @top-center {
+    content: counter(page);
+    font-family: 'Karrik',Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    padding-top: 5mm;
+    height: 20mm; } }
+
+@page :left {
+  margin-left: 15mm;
+  margin-right: 10mm;
+  margin-top: 20mm;
+  margin-bottom: 20mm;
+  @top-center {
+    content: counter(page);
+    font-family: 'Karrik',Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    padding-top: 5mm;
+    height: 20mm; }
+  @left-top {
+    content: element(title);
+    width: 100mm;
+    height: 20mm;
+    transform: rotate(-90deg);
+    transform-origin: top left;
+    position: relative;
+    top: 120mm;
+    font-family: 'Karrik', Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 10mm; } }
+
+@page :blank {
+  margin-left: 8mm;
+  margin-right: 10mm;
+  margin-top: 10mm;
+  @top-center {
+    content: '';
+    padding-top: 5mm; } }
+

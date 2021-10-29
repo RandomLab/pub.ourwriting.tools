@@ -1,0 +1,116 @@
+$pageheight : var(--pagedjs-pagebox-height);
+$pagewidth : var(--pagedjs-pagebox-width);
+
+@media print {
+    .garde {
+        // margin: 9mm;
+
+        // background-color: blue;
+        // page: blanc;
+        height: $pageheight;
+
+    }
+    
+    .chapitre {
+        padding-left: 5mm;
+        padding-right: 5mm;
+        padding-top: 35mm;
+        height: $pageheight;
+        // background-color: blueviolet;
+        // height: 115mm;
+        break-before: right;
+        // background-color:gray;
+    }
+    
+    .image {
+        padding-left: 5mm;
+        padding-right: 5mm;
+        padding-top: 15mm;
+        // background-color: lawngreen;
+        height: $pageheight;
+        figure {
+            img {
+                width: 100%;
+            }
+        }
+        // background-color: fuchsia;
+        break-before: right;
+    }
+    
+    .texte {
+        padding-left: 5mm;
+        padding-right: 5mm;
+        padding-top: 35mm;
+        height: $pageheight;
+        // background-color: blueviolet;
+        // height: 115mm;
+        break-before: right;
+        // background-color:orange;
+    }
+
+    .legende {
+        padding-left: 5mm;
+        padding-right: 5mm;
+        padding-top: 20mm;
+        height: $pageheight;
+        // background-color: blueviolet;
+        // height: 115mm;
+        // break-before: right;
+        // background-color: palegreen;
+
+    }
+
+    .title {  
+        position: running(title);
+      }
+    
+    .blanche {
+        // page: blanc;
+        height: $pageheight;
+        // background-color: pink;
+    }
+
+    .fig-1 {
+        margin-top: 30mm;
+        width: 90%;
+        padding-left: 10mm;
+    }
+
+    .fig-2 {
+        margin-top: 40mm;
+        width: 130%;
+        padding-right: 30mm;
+    }
+
+    .fig-3 {
+        margin-top: 10mm;
+        width: 90%;
+        padding-left: 10mm;
+        // filter: blur(5px);
+        filter: invert(100%);
+    }
+
+    .rotate_img {
+        transform: rotate(90deg);
+    }
+
+    .texte_courant {
+        font-family: 'Karrik', Arial, Helvetica, sans-serif;
+        font-size: 11pt;
+        line-height: 13pt;
+    }
+
+    .texte_fort {
+        font-family: 'HappyTimes', Times, serif;
+        font-size: 30pt;
+        line-height: 3.5;
+    }
+
+    .texte_heavy {
+        font-family: 'CirrusCumulus', Times, serif;
+        font-size: 50pt;
+        line-height: 3.5rem;
+    }
+
+
+}
