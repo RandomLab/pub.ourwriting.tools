@@ -2,6 +2,11 @@ $pageheight : var(--pagedjs-pagebox-height);
 $pagewidth : var(--pagedjs-pagebox-width);
 
 @media print {
+
+    img {
+        width: 100%;
+    }
+
     .garde {
         // margin: 9mm;
 
@@ -28,6 +33,7 @@ $pagewidth : var(--pagedjs-pagebox-width);
         padding-top: 15mm;
         // background-color: lawngreen;
         height: $pageheight;
+        
         figure {
             img {
                 width: 100%;
