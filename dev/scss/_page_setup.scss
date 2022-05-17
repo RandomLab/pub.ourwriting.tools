@@ -1,125 +1,128 @@
 /* To define how the book look on the screen: */
 :root{
-    --color-background:  whitesmoke;
-    --color-pageBox: #666;
-    --color-paper: white;
-    --color-marginBox: transparent;
+  --color-background:  whitesmoke;
+  --color-pageBox: #666;
+  --color-paper: white;
+  --color-marginBox: transparent;
+}
+
+
+/* To define how the book look on the screen: */
+@media screen {
+  body {
+      background-color: var(--color-background);
   }
-  
-  
-  /* To define how the book look on the screen: */
-  @media screen {
-    body {
-        background-color: var(--color-background);
-    }
-    .pagedjs_pages {
-        display: flex;
-        width: calc(var(--pagedjs-width) * 2);
-        flex: 0;
-        flex-wrap: wrap;
-        margin: 0 auto;
-    }
-    .pagedjs_page{
-          --pagedjs-baseline: 10mm;
-          --pagedjs-baseline-position: 9mm;
-          --pagedjs-baseline-color: cyan;
-          // background: linear-gradient( var(--color-paper) 0%, var(--color-paper) calc(var(--pagedjs-baseline) - 1px), var(--pagedjs-baseline-color) calc(var(--pagedjs-baseline) - 1px),  var(--pagedjs-baseline-color) var(--pagedjs-baseline)), transparent;
-          background-color: var(--color-paper);
-          background-size: 100% var(--pagedjs-baseline);
-          background-repeat: repeat-y;
-          background-position-y: var(--pagedjs-baseline-position);
-      }
-  
-    .pagedjs_first_page {
-        margin-left: var(--pagedjs-width);
-    }
-  
-    .pagedjs_page:last-of-type{
-        margin-bottom: 10mm;
-    }
-  
+  .pagedjs_pages {
+      display: flex;
+      width: calc(var(--pagedjs-width) * 2);
+      flex: 0;
+      flex-wrap: wrap;
+      margin: 0 auto;
   }
-  
-  
-  
-  .pagedjs_titre_page > .pagedjs_sheet > .pagedjs_pagebox > .pagedjs_area {
-    background-color: white !important;
+  .pagedjs_page{
+        --pagedjs-baseline: 10mm;
+        --pagedjs-baseline-position: 9mm;
+        --pagedjs-baseline-color: cyan;
+        // background: linear-gradient( var(--color-paper) 0%, var(--color-paper) calc(var(--pagedjs-baseline) - 1px), var(--pagedjs-baseline-color) calc(var(--pagedjs-baseline) - 1px),  var(--pagedjs-baseline-color) var(--pagedjs-baseline)), transparent;
+        background-color: var(--color-paper);
+        background-size: 100% var(--pagedjs-baseline);
+        background-repeat: repeat-y;
+        background-position-y: var(--pagedjs-baseline-position);
+    }
+
+  .pagedjs_first_page {
+      margin-left: var(--pagedjs-width);
   }
-  
-  // @media print {
 
-    @page {
-      size : 108mm 175mm;
-      margin: 20mm;
-      marks: crop;
-      bleed: 3.8mm;
-    }
-  
-    @page:right {
-      margin-left: 10mm;
-      margin-right: 15mm;
-      margin-top: 20mm;
-      margin-bottom: 20mm;
+  .pagedjs_page:last-of-type{
+      margin-bottom: 10mm;
+  }
 
-      // background-color: lightcoral;
+}
 
-      @top-center {
-        content: counter(page);
-        font-family: 'Karrik',Arial, Helvetica, sans-serif;
-        font-size: 9pt;
-        // background-color: red;
-        padding-top: 5mm;
-        height: 20mm;  
-      }
+.pagedjs_titre_page > .pagedjs_sheet > .pagedjs_pagebox > .pagedjs_area {
+  background-color: white !important;
+}
 
-  
-    }
-  
-    @page:left {
+@media print {
 
-      margin-left: 15mm;
-      margin-right: 10mm;
-      margin-top: 20mm;
-      margin-bottom: 20mm;
-      // background-color: aqua;
+  @page {
+    size : 148mm 210mm;
+    margin: 5mm;
+    // marks: crop;
+    // bleed: 3.2mm;
+    // padding-bottom: 5mm;
+  }
 
-      @top-center {
-        content: counter(page);
-        font-family: 'Karrik',Arial, Helvetica, sans-serif;
-        font-size: 9pt;
-        // background-color:green;
-        padding-top: 5mm;
-        height: 20mm;
-      }
+  @page:right {
+    margin-left: 15mm;
+    margin-right: 15mm;
+    margin-top: 15mm;
+    margin-bottom: 15mm;
 
-      @left-top {
-        content: element(title);
-        width: 100mm;
-        height: 20mm;
-        transform: rotate(-90deg);
-        transform-origin: top left;
-        position: relative;
-        top: 120mm;
-        font-family: 'Karrik', Arial, Helvetica, sans-serif;
-        font-size: 9pt;
-        letter-spacing: 0.1rem;
-        // text-align: center;
-        text-align: center;
-        text-transform: uppercase;
-        // background-color: crimson;
-        padding-top: 10mm;
-      }
-      
+    @bottom-left {
+      content: string(titre);
+      font-family: 'Inter var';
+      font-size: 8pt;
+      font-weight: 500;
+      height: 5mm;  
+      width: 80mm;
     }
 
-    @page:blank {
-      margin-left: 8mm;
-      margin-right: 10mm;
-      margin-top: 10mm;
-
-      @top-center {
-        content: '';
-        padding-top: 5mm;
-      }
+    @bottom-right {
+      content: counter(page);
+      font-family: 'Inter var';
+      font-size: 8pt;
+      font-weight: 500;
+      height: 5mm;  
     }
-  // }
+
+
+
+  }
+
+  @page:left {
+
+    margin-left: 15mm;
+    margin-right: 15mm;
+    margin-top: 15mm;
+    margin-bottom: 15mm;
+
+    @bottom-left {
+      content: counter(page);
+      font-family: 'Inter var';
+      font-size: 8pt;
+      font-weight: 500;
+      height: 5mm;  
+    }
+
+    @bottom-right {
+      content: "Digital Tools for Creative Collaboration";
+      font-family: 'Inter var';
+      font-size: 8pt;
+      font-weight: 500;
+      height: 5mm; 
+    }
+    
+  }
+
+  @page:blank {
+    margin-left: 15mm;
+    margin-right: 15mm;
+    margin-top: 15mm;
+    margin-bottom: 15mm;
+
+    @bottom-left {
+      content: none;
+   
+    }
+
+    @bottom-right {
+      content: none;
+
+    }
+    
+
+  }
+ 
+}

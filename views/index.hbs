@@ -1,7 +1,15 @@
-<ul>
-    {{#each list}}
-        <li><h1>{{this.title}}</h1>
-        <p>{{{this.content}}}</p>
-        </li>
-    {{/each}}
-</ul>
+{{> fauxTitre }}
+
+{{> workshop }}
+
+{{#each eka}}
+    <section class="chapter" data-chapter="{{@index}}">
+    {{{this.content}}}
+    </section>
+{{/each}}
+
+{{#each esadse}}
+    <section class="chapter" data-chapter="{{@index}}">
+    {{{this.content}}}
+    </section>
+{{/each}}

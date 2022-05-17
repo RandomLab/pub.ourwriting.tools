@@ -1,9 +1,24 @@
 const https = require('https')
 const express = require('express')
-const exphbs = require('express-handlebars');
-const { text } = require('body-parser');
-const MarkdownIt = require('markdown-it'),
-    md = new MarkdownIt()
+const exphbs = require('express-handlebars')
+
+const MarkdownIt = require('markdown-it')({
+    html: true,
+    linkify: true,
+    typographer: true,
+})
+
+const markdownItAttrs = require('markdown-it-attrs')
+const markdownItFigure = require('markdown-it-figure')
+
+MarkdownIt.use(markdownItAttrs, {
+    leftDelimiter: '{',
+    rightDelimiter: '}',
+    allowedAttributes: [],
+})
+
+MarkdownIt.use(markdownItFigure)
+
 
 require('dotenv').config()
 
@@ -13,43 +28,23 @@ app.use(express.static('public'))
 
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
-    extname: '.hbs'
+    extname: '.hbs',
+    partialsDir: __dirname + '/views/partials/'
 }))
+
 app.set('view engine', 'hbs')
 app.set('views', `${__dirname}/views`)
 
-let data = { list : [] }
-
-const replaceURL = (url) => {
-    const re = /!\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/
-    let result = url.match(re)
-    if (result) {
-        return `![image](https://wiki.ourwriting.tools${result[1]})`
-    } else {
-        return null
-    }
+const data = { 
+    intro : [],
+    eka: [],
+    esadse: []
 }
 
-const parseMarkdown = (md) => {
-    let newTxt = ''
-    let txt = md.split('\n')
-    txt.forEach(e => {
-        let r = replaceURL(e)
-        if (r) {
-            newTxt += r + '\n'
-        } else {
-            if (!!e) {
-                newTxt += e + '\n'
-            }
-        }
-    })
-    
-    return newTxt   
-}
+const getSingleContent = (tag, obj) => {
 
-
-const getSingleContent = obj => {
     // get a single page
+    
     const data_content = JSON.stringify({
         query: `{
             pages {
@@ -74,8 +69,10 @@ const getSingleContent = obj => {
     }
 
     const req = https.request(options, (res) => {
-        console.log(res.headers)
+        // console.log(res.headers)
+        
         let data_content = ''
+        
         console.log(`statusCode: ${res.statusCode}`)
     
         res.on('data', (d) => {
@@ -83,11 +80,14 @@ const getSingleContent = obj => {
         })
         
         res.on('end', () => {
+
             const renderData = JSON.parse(data_content).data.pages.single
-            const newMD = parseMarkdown(renderData.content)
-            let html = md.render(newMD)
+                        
+            let html = MarkdownIt.render(renderData.content)
+            
             obj['content'] = html 
-            data.list.push(obj)
+            
+            data[tag].push(obj)
         })
     
     })
@@ -101,14 +101,17 @@ const getSingleContent = obj => {
 } 
 
 
-const getAllPages = () => {
+const getAllPages = (tag) => {
+
     // get the list of pages
+    
     const data_list = JSON.stringify({
         query: `{
             pages {
-                list(tags:["eka","pub"], orderByDirection:DESC) {
+                list(tags:["${tag}"], orderBy:TITLE) {
                     id
                     title
+                    createdAt
                 }
             }
         }`
@@ -128,8 +131,11 @@ const getAllPages = () => {
     }
 
     const req = https.request(options, (res) => {
-        console.log(res.headers)
+        
+        // console.log(res.headers)
+
         let data_list = ''
+
         console.log(`statusCode: ${res.statusCode}`)
 
         res.on('data', (d) => {
@@ -140,7 +146,8 @@ const getAllPages = () => {
             const renderData = JSON.parse(data_list).data.pages.list
             
             renderData.forEach(element => {
-              getSingleContent(element)  
+                console.log(renderData)
+                getSingleContent(tag, element)  
             })
 
         })
@@ -161,5 +168,7 @@ app.get('/', (req, res, next) => {
 })
 
 app.listen(process.env.PORT || 3000, () => {
-    getAllPages()
+    getAllPages('intro')
+    getAllPages('eka')
+    getAllPages('esadse')
 })

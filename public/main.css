@@ -1,88 +1,194 @@
 /*!***************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./dev/style.scss ***!
   \***************************************************************************************************************************************************/
-@media print {
-  img {
-    width: 100%; }
-  .garde {
-    height: var(--pagedjs-pagebox-height); }
-  .chapitre {
-    padding-left: 5mm;
-    padding-right: 5mm;
-    padding-top: 35mm;
-    height: var(--pagedjs-pagebox-height);
-    -moz-column-break-before: right;
-         break-before: right; }
-  .image {
-    padding-left: 5mm;
-    padding-right: 5mm;
-    padding-top: 15mm;
-    height: var(--pagedjs-pagebox-height);
-    -moz-column-break-before: right;
-         break-before: right; }
-    .image figure img {
-      width: 100%; }
-  .texte {
-    padding-left: 5mm;
-    padding-right: 5mm;
-    padding-top: 35mm;
-    height: var(--pagedjs-pagebox-height);
-    -moz-column-break-before: right;
-         break-before: right; }
-  .legende {
-    padding-left: 5mm;
-    padding-right: 5mm;
-    padding-top: 20mm;
-    height: var(--pagedjs-pagebox-height); }
-  .title {
-    position: running(title); }
-  .blanche {
-    height: var(--pagedjs-pagebox-height); }
-  .fig-1 {
-    margin-top: 30mm;
-    width: 90%;
-    padding-left: 10mm; }
-  .fig-2 {
-    margin-top: 40mm;
-    width: 130%;
-    padding-right: 30mm; }
-  .fig-3 {
-    margin-top: 10mm;
-    width: 90%;
-    padding-left: 10mm;
-    filter: invert(100%); }
-  .rotate_img {
-    transform: rotate(90deg); }
-  .texte_courant {
-    font-family: 'Karrik', Arial, Helvetica, sans-serif;
-    font-size: 11pt;
-    line-height: 13pt; }
-  .texte_fort {
-    font-family: 'HappyTimes', Times, serif;
-    font-size: 30pt;
-    line-height: 3.5; }
-  .texte_heavy {
-    font-family: 'CirrusCumulus', Times, serif;
-    font-size: 50pt;
-    line-height: 3.5rem; } }
+@font-face {
+  font-family: "Inter var";
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: "Regular";
+  src: url("http://localhost:3000/fonts/Inter-roman.var.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter var";
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+  font-named-instance: "Italic";
+  src: url("http://localhost:3000/fonts/Inter-italic.var.woff2") format("woff2");
+}
+#faux-titre {
+  page: faux-titre;
+  -moz-column-break-after: page;
+       break-after: page;
+}
+
+#introduction {
+  page: faux-titre;
+}
+
+#colophon {
+  page: faux-titre;
+}
+
+@page faux-titre {
+  margin-left: 15mm;
+  margin-right: 15mm;
+  margin-top: 15mm;
+  margin-bottom: 15mm;
+  @bottom-left {
+    content: none;
+  }
+  @bottom-right {
+    content: none;
+  }
+}
+#empty {
+  page: empty;
+}
+
+@page empty {
+  margin: 20mm;
+  @bottom-left {
+    content: none;
+  }
+  @bottom-right {
+    content: none;
+  }
+}
+#party {
+  page: party;
+}
+
+.party {
+  font-size: 34pt;
+}
+
+@page party {
+  margin-left: 15mm;
+  margin-right: 15mm;
+  margin-top: 15mm;
+  margin-bottom: 15mm;
+  @bottom-left {
+    content: none;
+  }
+  @bottom-right {
+    content: none;
+  }
+}
+html, body {
+  font-family: "Inter var";
+  font-size: 11pt;
+  font-weight: 500;
+  line-height: 16pt;
+}
+
+p {
+  margin-bottom: 5mm;
+}
+p i {
+  font-style: italic;
+}
+
+.maintitle {
+  font-family: "Inter var";
+  font-size: 31pt;
+  line-height: 36pt;
+}
+
+.secondtitle {
+  font-family: "Inter var";
+  font-size: 21pt;
+  line-height: 26pt;
+}
+
+.chapter {
+  font-family: "Inter var";
+  font-size: 11pt;
+  line-height: 16pt;
+}
+
+.chapter p {
+  font-size: 11pt;
+  line-height: 16pt;
+  margin-bottom: 5mm;
+}
+
+.chapter h1 {
+  page-break-before: right;
+  page-break-after: left;
+  margin-bottom: 5mm;
+  width: 100mm;
+  font-weight: bold;
+  font-size: 15pt;
+}
+
+.chapter h2, h3, li {
+  margin-bottom: 5mm;
+  margin-top: 5mm;
+  font-weight: bold;
+}
+
+figure {
+  width: 105mm;
+  margin-top: 5mm;
+  margin-bottom: 15mm;
+}
+figure figcaption {
+  font-size: 9pt;
+  display: none;
+}
+figure img {
+  width: 100%;
+}
+
+img {
+  width: 100%;
+  -moz-column-break-after: page;
+       break-after: page;
+  -moz-column-break-before: page;
+       break-before: page;
+}
+
+.title {
+  string-set: titre content(text);
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+sup {
+  font-size: 16pt;
+  vertical-align: super;
+}
 
 /* To define how the book look on the screen: */
 :root {
-  --color-background:  whitesmoke;
+  --color-background: whitesmoke;
   --color-pageBox: #666;
   --color-paper: white;
-  --color-marginBox: transparent; }
+  --color-marginBox: transparent;
+}
 
 /* To define how the book look on the screen: */
 @media screen {
   body {
-    background-color: var(--color-background); }
+    background-color: var(--color-background);
+  }
+
   .pagedjs_pages {
     display: flex;
     width: calc(var(--pagedjs-width) * 2);
     flex: 0;
     flex-wrap: wrap;
-    margin: 0 auto; }
+    margin: 0 auto;
+  }
+
   .pagedjs_page {
     --pagedjs-baseline: 10mm;
     --pagedjs-baseline-position: 9mm;
@@ -90,67 +196,80 @@
     background-color: var(--color-paper);
     background-size: 100% var(--pagedjs-baseline);
     background-repeat: repeat-y;
-    background-position-y: var(--pagedjs-baseline-position); }
+    background-position-y: var(--pagedjs-baseline-position);
+  }
+
   .pagedjs_first_page {
-    margin-left: var(--pagedjs-width); }
+    margin-left: var(--pagedjs-width);
+  }
+
   .pagedjs_page:last-of-type {
-    margin-bottom: 10mm; } }
-
+    margin-bottom: 10mm;
+  }
+}
 .pagedjs_titre_page > .pagedjs_sheet > .pagedjs_pagebox > .pagedjs_area {
-  background-color: white !important; }
+  background-color: white !important;
+}
 
-@page {
-  size: 108mm 175mm;
-  margin: 20mm;
-  marks: crop;
-  bleed: 3.8mm; }
-
-@page :right {
-  margin-left: 10mm;
-  margin-right: 15mm;
-  margin-top: 20mm;
-  margin-bottom: 20mm;
-  @top-center {
-    content: counter(page);
-    font-family: 'Karrik',Arial, Helvetica, sans-serif;
-    font-size: 9pt;
-    padding-top: 5mm;
-    height: 20mm; } }
-
-@page :left {
-  margin-left: 15mm;
-  margin-right: 10mm;
-  margin-top: 20mm;
-  margin-bottom: 20mm;
-  @top-center {
-    content: counter(page);
-    font-family: 'Karrik',Arial, Helvetica, sans-serif;
-    font-size: 9pt;
-    padding-top: 5mm;
-    height: 20mm; }
-  @left-top {
-    content: element(title);
-    width: 100mm;
-    height: 20mm;
-    transform: rotate(-90deg);
-    transform-origin: top left;
-    position: relative;
-    top: 120mm;
-    font-family: 'Karrik', Arial, Helvetica, sans-serif;
-    font-size: 9pt;
-    letter-spacing: 0.1rem;
-    text-align: center;
-    text-transform: uppercase;
-    padding-top: 10mm; } }
-
-@page :blank {
-  margin-left: 8mm;
-  margin-right: 10mm;
-  margin-top: 10mm;
-  @top-center {
-    content: '';
-    padding-top: 5mm; } }
-
+@media print {
+  @page {
+    size: 148mm 210mm;
+    margin: 5mm;
+  }
+  @page :right {
+    margin-left: 15mm;
+    margin-right: 15mm;
+    margin-top: 15mm;
+    margin-bottom: 15mm;
+    @bottom-left {
+      content: string(titre);
+      font-family: "Inter var";
+      font-size: 8pt;
+      font-weight: 500;
+      height: 5mm;
+      width: 80mm;
+    }
+    @bottom-right {
+      content: counter(page);
+      font-family: "Inter var";
+      font-size: 8pt;
+      font-weight: 500;
+      height: 5mm;
+    }
+  }
+  @page :left {
+    margin-left: 15mm;
+    margin-right: 15mm;
+    margin-top: 15mm;
+    margin-bottom: 15mm;
+    @bottom-left {
+      content: counter(page);
+      font-family: "Inter var";
+      font-size: 8pt;
+      font-weight: 500;
+      height: 5mm;
+    }
+    @bottom-right {
+      content: "Digital Tools for Creative Collaboration";
+      font-family: "Inter var";
+      font-size: 8pt;
+      font-weight: 500;
+      height: 5mm;
+    }
+  }
+  @page :blank {
+    margin-left: 15mm;
+    margin-right: 15mm;
+    margin-top: 15mm;
+    margin-bottom: 15mm;
+    @bottom-left {
+      content: none;
+    }
+    @bottom-right {
+      content: none;
+    }
+  }
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -161,30 +280,37 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+}
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block; }
+  display: block;
+}
 
 body {
-  line-height: 1; }
+  line-height: 1;
+}
 
 ol, ul {
-  list-style: none; }
+  list-style: none;
+}
 
 blockquote, q {
-  quotes: none; }
+  quotes: none;
+}
 
 blockquote:before, blockquote:after {
-  content: '';
-  content: none; }
+  content: "";
+  content: none;
+}
 
 q:before, q:after {
-  content: '';
-  content: none; }
+  content: "";
+  content: none;
+}
 
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
-
+  border-spacing: 0;
+}
